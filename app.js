@@ -18,8 +18,13 @@ app.use(express.static("public"));
 // const items = ["Buy Food", "Cook Food", "Eat Food"];
 // const workItems = [];
 
+// Add connection to MongoDb Atlas
+const dbConnectionString = require('./connections.js');
+
 // Initialize Mongoose
-mongoose.connect("mongodb://127.0.0.1:27017/todolistDB");
+mongoose.connect(dbConnectionString + "todolistDB");
+
+
 
 // Create a todolist Items Scema
 const itemsSchema = new mongoose.Schema({
