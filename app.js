@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const _ = require('lodash');
+const port = process.env.PORT;
 const mongoose = require("mongoose");
 // const date = require(__dirname + "/date.js");
 
@@ -105,32 +106,6 @@ app.get("/:newListName", async function(req, res){
   }
 })
 
-// app.get("/:customListName",function(req,res){
-//   const customListName = req.params.customListName;
-//   console.log("test");
- 
-//   List.findOne({name:customListName})
-//     .then(function(foundList){
-        
-//       if(!foundList){
-//         const list = new List({
-//           name:customListName,
-//           items:defaultItems
-//         });
-      
-//         list.save();
-//         console.log("saved");
-//         res.redirect("/"+customListName);
-//       }
-//       else{
-//         res.render("list",{listTitle:foundList.name, newListItems:foundList.items});
-//         console.log("exist");
-//       }
-//     })
-//     .catch(function(err){});  
-// })
-
-
 // Cath the post request triggerd by the client
 app.post("/", async function(req, res){
 
@@ -155,17 +130,6 @@ app.post("/", async function(req, res){
         console.log(err);
       }
      }
-  
-
-
-
-  // if (req.body.list === "Work") {
-  //   workItems.push(item);
-  //   res.redirect("/work");
-  // } else {
-  //   items.push(item);
-  //   res.redirect("/");
-  // }
 });
 
 app.post("/delete", async function(req, res){
@@ -192,16 +156,10 @@ app.post("/delete", async function(req, res){
 })
 
 
-// app.get('/favicon.ico', (req, res) => res.status(204));
-
-// app.get("/work", function(req,res){
-//   res.render("list", {listTitle: "Work List", newListItems: ["hi", "hello"]});
-// });
-
 app.get("/about", function(req, res){
   res.render("about");
 });
 
-app.listen(3000, function() {
+app.listen(port, function() {
   console.log("Server started on port 3000");
 });
