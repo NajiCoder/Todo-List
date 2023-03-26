@@ -1,4 +1,4 @@
-
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const _ = require('lodash');
@@ -19,7 +19,7 @@ app.use(express.static("public"));
 // const workItems = [];
 
 // Add connection to MongoDb Atlas
-const dbConnectionString = require('./connections.js');
+const dbConnectionString = process.env.Atlas_Connection;
 
 // Initialize Mongoose
 mongoose.connect(dbConnectionString + "todolistDB");
